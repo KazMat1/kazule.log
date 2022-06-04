@@ -26,8 +26,8 @@ export default function CategoryId({ blog }) {
 // 静的ページ生成のためのパスを指定します
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "categories" });
-
   const paths = data.contents.map((content) => `/category/${content.id}`);
+  
   return { paths, fallback: false };
 };
 
