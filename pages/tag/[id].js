@@ -3,12 +3,12 @@ import { client } from "../../src/libs/client";
 import styles from '../../styles/Home.module.scss';
 
 
-export default function CategoryId({ blog }) {
-  // カテゴリーに紐付いたコンテンツがない場合に表示
+export default function TagId({ blog }) {
+  // タグに紐付いたコンテンツがない場合に表示
   if (blog.length === 0) {
     return <div>ブログコンテンツがありません</div>;
   }
-  // カテゴリーに紐付いたコンテンツがある場合に表示
+  // タグに紐付いたコンテンツがある場合に表示
   return (
     <div>
       <ul>
@@ -26,16 +26,16 @@ export default function CategoryId({ blog }) {
 
 // 静的ページ生成のためのパスを指定します
 export const getStaticPaths = async () => {
-  const data = await client.get({ endpoint: "categories" });
-  const paths = data.contents.map((content) => `/category/${content.id}`);
-
+  const data = await client.get({ endpoint: "tags" });
+  const paths = data.contents.map((content) => `/tag/${content.id}`);
+  
   return { paths, fallback: false };
 };
 
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const data = await client.get({ endpoint: "blog", queries: { filters: `category[equals]${id}` } });
+  const data = await client.get({ endpoint: "blog", queries: { filters: `tags[contains]${id}` } });
 
   return {
     props: {
