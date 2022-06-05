@@ -1,7 +1,6 @@
 // 記事詳細ページ
-import { client } from "../../src/libs/client";
+import { client } from "../../libs/client"
 import styles from '../../styles/Home.module.scss';
-
 
 export default function BlogId({ blog }) {
   return (

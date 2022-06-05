@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { client } from "../src/libs/client";
+import { client } from "../libs/client";
 
 export default function Home({ blog, category, tag }) {
   return (
