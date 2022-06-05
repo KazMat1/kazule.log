@@ -3,6 +3,19 @@ import { client } from "../../libs/client"
 import styles from '../../styles/Home.module.scss';
 
 export default function BlogId({ blog }) {
+  // ブログの本文がない場合
+  if(!blog.body) {
+    return (
+      <main className={styles.main}>
+      <h1 className={styles.title}>{blog.title}</h1>
+      <p className={styles.publishedAt}>{blog.publishedAt}</p>
+      <p>{blog.category && `${blog.category.name}`}</p>
+      <div className={styles.post}>ブログの本文がありません</div>
+      <div/>
+    </main>
+    );
+  }
+  // ブログの本文がある場合
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>{blog.title}</h1>

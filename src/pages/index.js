@@ -1,42 +1,19 @@
 import Link from "next/link";
-import { client } from "../libs/client";
 
-export default function Home({ blog, category, tag }) {
+import { client } from "../libs/client";
+import { Pagination } from "../components/Pagination";
+import { CategoryList } from "../components/CategoryList";
+import { TagList } from "../components/TagList";
+import { BlogList } from "../components/BlogList"
+
+export default function Home({ blog, category, tag, totalCount }) {
   return (
     <div> 
-      <p>これはタグによるブログの絞り込みです</p>
-      <ul>
-        {tag.map((tag) => (
-          // カテゴリの取得
-          <li key={tag.id}>
-            <Link href={`/tag/${tag.id}`}>
-              <a>{tag.name}</a>
-            </Link>
-          </li>
-        ))}
-      </ul> 
-      <p>これはカテゴリーによるブログの絞り込みです</p>
-      <ul>
-        {category.map((category) => (
-          // カテゴリの取得
-          <li key={category.id}>
-            <Link href={`/category/${category.id}`}>
-              <a>{category.name}</a>
-            </Link>
-          </li>
-        ))}
-      </ul> 
-      <p>これはブログの取得です</p>
-      <ul>
-        {blog.map((blog) => (
-          // ブログの出力
-          <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>
-              <a>{blog.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <h1>投稿一覧ページです</h1>
+      <TagList tag={tag} />
+      <CategoryList category={category} />
+      <BlogList blog={blog} />
+      <Pagination totalCount={totalCount} />
     </div>
   );
 }
@@ -46,11 +23,14 @@ export const getStaticProps = async () => {
   const blogData = await client.get({ endpoint: "blog" });
   const categoryData = await client.get({ endpoint: "categories" });
   const tagData = await client.get({ endpoint: "tags" });
+  // 絞り込みがうまくできていない
+  const totalCountData = await client.get({ endpoint: "blog", queries: { limit: 20, offset: 0, limit: 5 } });
   return {
     props: {
       blog: blogData.contents,
       category: categoryData.contents,
       tag: tagData.contents,
+      totalCount: totalCountData.totalCount,
     },
   };
 };
