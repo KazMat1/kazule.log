@@ -4,7 +4,6 @@ import Link from "next/link";
 export const CategoryList = ({ category }) => {
   return (
     <div>
-      <h3>これはカテゴリーによるブログの絞り込みです</h3>
       <ul>
         {category.map((category) => (
           // カテゴリの取得

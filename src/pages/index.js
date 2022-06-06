@@ -10,8 +10,11 @@ export default function Home({ blog, category, tag, totalCount }) {
   return (
     <div> 
       <h1>投稿一覧ページです</h1>
+      <h3>これはタグによるブログの絞り込みです</h3>
       <TagList tag={tag} />
+      <h3>これはカテゴリーによるブログの絞り込みです</h3>
       <CategoryList category={category} />
+      <h3>これはブログの取得です</h3>
       <BlogList blog={blog} />
       <Pagination totalCount={totalCount} />
     </div>

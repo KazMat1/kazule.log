@@ -12,6 +12,11 @@ export default function BlogId({ blog }) {
       <h1 className={styles.title}>{blog.title}</h1>
       <p className={styles.publishedAt}>{blog.publishedAt}</p>
       <p>{blog.category && `${blog.category.name}`}</p>
+      {
+        blog.tags && blog.tags.map(tag =>(
+        <p key={tag.id}>{`${tag.name}`}</p>
+        ))
+      }
       <div className={styles.post}>ブログの本文がありません</div>
       <div/>
     </main>
@@ -24,6 +29,11 @@ export default function BlogId({ blog }) {
       <h1 className={styles.title}>{blog.title}</h1>
       <p className={styles.publishedAt}>{blog.publishedAt}</p>
       <p>{blog.category && `${blog.category.name}`}</p>
+      {
+        blog.tags && blog.tags.map(tag =>(
+        <p key={tag.id}>{`${tag.name}`}</p>
+        ))
+      }
       {blog.toc_visible && (
         <TableOfContents toc={toc} />
       )}

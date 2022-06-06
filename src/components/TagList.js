@@ -3,7 +3,6 @@ import Link from "next/link";
 export const TagList = ({ tag }) => {
   return (
     <div>
-      <h3>これはタグによるブログの絞り込みです</h3>
       <ul>
         {tag.map((tag) => (
           // タグの取得
