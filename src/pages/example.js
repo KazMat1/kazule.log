@@ -8,12 +8,14 @@ import { TagList } from "../components/TagList";
 import { BlogList } from "../components/BlogList";
 // import { logo } from "../../public/img/logo.svg";
 import { Header } from "../components/Header";
+import IconLabelButtons from "../components/IconLabelButtons";
 
 
 export default function Home({ blog, category, tag, totalCount }) {
   return (
     <>
       <Header />
+      <IconLabelButtons />
       {/* <main>
         <div className="kv">
           <picture>
