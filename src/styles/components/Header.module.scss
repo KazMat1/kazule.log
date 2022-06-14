@@ -1,0 +1,49 @@
+@import '../util.module';
+@import '../variables';
+
+@mixin nav-after($content) {
+  content: $content;
+  display: block;
+  color: $color-secondary;
+  margin-top: .3rem;
+  font-size: .7rem;
+}
+
+.header__container {
+  @include flex-between();
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 6% 4%;
+  .nav__brand {
+    color: $color-secondary;
+    font-size: 2rem;
+  }
+  .nav__container {
+    @include flex-end();
+    .nav__list {
+      margin-left: 1.5rem;
+      font-size: 1.3rem;
+      text-align: center; 
+      .nav__item01::after {
+        @include nav-after('〇〇とは');
+      }
+      .nav__item02::after {
+        @include nav-after('制作実績');
+      }
+      .nav__item03::after {
+        @include nav-after('スキル');
+      }
+      .nav__item04::after {
+        @include nav-after('お知らせ');
+      }
+      .nav__item05::after {
+        @include nav-after('お問い合わせ');
+      }
+      .icon__container {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+}

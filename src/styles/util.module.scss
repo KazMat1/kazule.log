@@ -1,0 +1,32 @@
+// news
+@mixin dt-dd-sp {
+  width: 100%;
+  display: block;
+}
+@mixin dt-dd-pc {
+  padding: 1rem;
+  border-bottom: solid 1px #c8c8c8;
+}
+// font
+@mixin text($text-color, $font-size: 90%) {
+  color: $text-color;
+  line-height: 1.5rem;
+  letter-spacing: 0.05em;
+  font-size: $font-size;
+}
+// layout
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

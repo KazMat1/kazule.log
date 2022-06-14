@@ -1,0 +1,9 @@
+$color-primary: #f9f6f0;
+$color-secondary: #333;
+$pc: 600px;
+
+@mixin pc {
+  @media screen and (min-width: ($pc)) {
+    @content;
+  }
+}
